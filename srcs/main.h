@@ -23,21 +23,21 @@
 
 typedef struct	s_tga
 {
-	char	idlen;
-	char	clr_map_type;
-	char	img_type;
-	char	pxdepth;
-	short	cmpos;
-	short	cmlen;
-	short	cmsize;
+	unsigned char	idlen;
+	unsigned char	clr_map_type;
+	unsigned char	img_type;
+	unsigned short	cmpos;
+	unsigned short	cmlen;
+	unsigned short	cmsize;
 }				t_tga;
 
 typedef struct	s_img
 {
-	short			xorigin;
-	short			yorigin;
-	short			width;
-	short			height;
+	unsigned char	pxdepth;
+	unsigned short	xorigin;
+	unsigned short	yorigin;
+	unsigned short	width;
+	unsigned short	height;
 	unsigned int	*pixels;
 }				t_img;
 
@@ -54,5 +54,6 @@ int			opentga(t_img *img, char *loc);
 void		plot(int x, int y, int colour, t_mlx *mlx);
 void		displayimage(t_mlx *mlx);
 char		reversebyte(char b);
+void		strtoimg(t_img *img, t_tga *tga, char *str);
 
 #endif

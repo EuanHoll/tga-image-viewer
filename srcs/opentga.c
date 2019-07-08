@@ -17,14 +17,14 @@ static void	settgaheader(char *str, t_tga *tga, t_img *img)
 	tga->idlen = (str[0]);
 	tga->clr_map_type = (str[1]);
 	tga->img_type = (str[2]);
-	tga->cmpos = (str[3] << 8) | str[4];
-	tga->cmlen = (str[5] << 8) | str[6];
+	tga->cmpos = (str[4] << 8) | str[3];
+	tga->cmlen = (str[6] << 8) | str[5];
 	tga->cmsize = str[7];
-	img->xorigin = (str[10] << 8) | str[11];
-	img->yorigin = (str[12] << 8) | str[13];
-	img->width = (str[14] << 8) | str[15];
-	img->height = (str[16] << 8) | str[17];
-	tga->pxdepth = str[18];
+	img->xorigin = (str[9] << 8) | str[8];
+	img->yorigin = (str[11] << 8) | str[10];
+	img->width = (str[13] << 8) | str[12];
+	img->height = (str[15] << 8) | str[14];
+	img->pxdepth = str[16];
 }
 
 int			opentga(t_img *img, char *loc)
@@ -33,7 +33,6 @@ int			opentga(t_img *img, char *loc)
 	char	*str;
 	t_tga	tga;
 
-	img--;
 	fd = open(loc, O_RDONLY);
 	if (fd == -1)
 		return (0);
@@ -42,5 +41,8 @@ int			opentga(t_img *img, char *loc)
 	if (str == NULL)
 		return (0);
 	settgaheader(str, &tga, img);
+	if (tga.img_type == 0)
+		return (0);
+	strtoimg(img, &tga, str);
 	return (1);
 }

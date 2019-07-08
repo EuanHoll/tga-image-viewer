@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main plot displayimage opentga
+SRC = main plot displayimage opentga strtoimg
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = tga-viewer

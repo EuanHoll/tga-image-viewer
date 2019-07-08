@@ -20,6 +20,7 @@ int			setup(t_mlx *mlx, char *loc)
 	if (!opentga(&mlx->image, loc))
 		return (0);
 	mlx->mlx = mlx_init();
+	printf("Screen Size %i %i\n", mlx->image.width, mlx->image.height);
 	mlx->win = mlx_new_window(mlx->mlx, mlx->image.width, mlx->image.height, "TGA Viewer");
 	mlx->img_pt = mlx_new_image(mlx->mlx, mlx->image.width, mlx->image.height);
 	mlx->img_add = mlx_get_data_addr(mlx->img_pt, &tmp, &tmp, &tmp);
