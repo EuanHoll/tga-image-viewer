@@ -3,25 +3,29 @@
 /*                                                        ::::::::            */
 /*   ft_strjoin.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 15:43:19 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/04/08 19:42:46 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 13:16:43 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/30 19:03:41 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *str1, const char *str2)
 {
-	char *str;
+	size_t			str1len;
+	size_t			str2len;
+	char			*str;
 
-	if (!(char*)s1 || !(char*)s2)
+	if (str1 == NULL || str2 == NULL)
 		return (NULL);
-	str = ft_strnew(ft_strlen((char*)s1) + ft_strlen((char*)s2));
-	if (!str)
+	str1len = ft_strlen(str1);
+	str2len = ft_strlen(str2);
+	str = ft_strnew(str1len + str2len);
+	if (str == NULL)
 		return (NULL);
-	str = ft_strcpy(str, s1);
-	str = ft_strcat(str, s2);
+	ft_memcpy(str, str1, str1len);
+	ft_memcpy(&str[str1len], str2, str2len);
 	return (str);
 }

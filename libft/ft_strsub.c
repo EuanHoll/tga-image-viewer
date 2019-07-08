@@ -3,24 +3,25 @@
 /*                                                        ::::::::            */
 /*   ft_strsub.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/24 14:29:18 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/27 20:06:34 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 13:11:37 by pholster       #+#    #+#                */
+/*   Updated: 2019/05/01 00:36:48 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(const char *str, unsigned int start, size_t len)
 {
-	char *str;
+	char	*ret;
 
-	if ((int)len < 0 || !(char*)s)
+	if (str == NULL)
 		return (NULL);
-	str = ft_strnew(len);
-	if (!str)
+	ret = ft_strnew(len);
+	if (ret == NULL)
 		return (NULL);
-	str = ft_strncpy(str, &s[start], len);
-	return (str);
+	ft_memcpy(ret, &str[start], len);
+	ret[len] = '\0';
+	return (ret);
 }

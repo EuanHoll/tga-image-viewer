@@ -3,33 +3,53 @@
 /*                                                        ::::::::            */
 /*   ft_lstmap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/24 16:05:17 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/27 12:51:43 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/13 14:35:14 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+static t_list	*freeret(t_list **lst)
 {
-	t_list *elem;
-	t_list *elem1;
+	ft_lstdel(lst, &ft_lstdelmem);
+	return (NULL);
+}
 
-	if (!lst)
+static t_list	*list_set(t_list *elem)
+{
+	t_list *new;
+
+	new = ft_lstnew(elem->content, elem->content_size);
+	if (new == NULL)
 		return (NULL);
-	elem = f(lst);
-	elem1 = elem;
-	while (lst->next)
+	return (new);
+}
+
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list	*current;
+	t_list	*retlst;
+	t_list	*prvlst;
+	t_list	*duplst;
+
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	retlst = list_set(f(lst));
+	if (retlst == NULL)
+		return (NULL);
+	current = lst->next;
+	prvlst = retlst;
+	while (current != NULL)
 	{
-		lst = lst->next;
-		elem->next = f(lst);
-		if (!elem->next)
-		{
-			return (NULL);
-		}
-		elem = elem->next;
+		duplst = list_set(f(current));
+		if (duplst == NULL)
+			return (freeret(&retlst));
+		prvlst->next = duplst;
+		prvlst = duplst;
+		current = current->next;
 	}
-	return (elem1);
+	return (retlst);
 }

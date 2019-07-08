@@ -10,10 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main plot displayimage opentga
+SRC = main plot displayimage opentga reversebyte
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
-NAME = fractol
+NAME = tga-viewer
 MINILIBX = -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
 MINILOC = minilibx
 LIBFT = -I libft/includes -L libft -lft

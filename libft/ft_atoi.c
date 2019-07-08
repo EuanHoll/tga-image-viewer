@@ -3,51 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_atoi.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 17:41:06 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/27 19:13:24 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/10 11:30:39 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static void	ft_neg(long *i, long *neg, char *str)
-{
-	if (str[*i] == '-')
-	{
-		*neg = -1;
-		(*i)++;
-	}
-	else if (str[*i] == '+')
-	{
-		*neg = 1;
-		(*i)++;
-	}
-	else
-		*neg = 1;
-}
+#include "includes/libft.h"
 
 int			ft_atoi(const char *str)
 {
-	long	i;
-	long	j;
-	long	neg;
-
-	j = 0;
-	i = ft_skipwhitespace((char*)str, 0);
-	ft_neg(&i, &neg, (char*)str);
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			j *= 10;
-			j += str[i] - '0';
-		}
-		else if (((str[i] != '-' || str[i] != '+'))
-			|| str[i] == '\e')
-			break ;
-		i++;
-	}
-	return (neg * j);
+	return (ft_atoi_base(str, 10));
 }

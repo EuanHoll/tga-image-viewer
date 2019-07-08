@@ -23,6 +23,7 @@ int			setup(t_mlx *mlx, char *loc)
 	mlx->win = mlx_new_window(mlx->mlx, mlx->image.width, mlx->image.height, "TGA Viewer");
 	mlx->img_pt = mlx_new_image(mlx->mlx, mlx->image.width, mlx->image.height);
 	mlx->img_add = mlx_get_data_addr(mlx->img_pt, &tmp, &tmp, &tmp);
+	displayimage(mlx);
 	return (1);
 }
 
@@ -30,13 +31,14 @@ int			main(int argc, char **argv)
 {
 	t_mlx	mlx;
 
-	if (argc == 1)
+	if (argc == 2)
 	{
 		if (!setup(&mlx, argv[1]))
 		{
 			ft_putendl("Please Enter a valid file");
 			return (0);
 		}
+		mlx_loop(mlx.mlx);
 	}
 	return (0);
 }

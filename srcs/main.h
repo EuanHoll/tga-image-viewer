@@ -21,10 +21,23 @@
 # include <fcntl.h>
 # include <stdio.h> //Remove
 
+typedef struct	s_tga
+{
+	char	idlen;
+	char	clr_map_type;
+	char	img_type;
+	char	pxdepth;
+	short	cmpos;
+	short	cmlen;
+	short	cmsize;
+}				t_tga;
+
 typedef struct	s_img
 {
-	int				width;
-	int				height;
+	short			xorigin;
+	short			yorigin;
+	short			width;
+	short			height;
 	unsigned int	*pixels;
 }				t_img;
 
@@ -39,5 +52,7 @@ typedef struct	s_mlx
 
 int			opentga(t_img *img, char *loc);
 void		plot(int x, int y, int colour, t_mlx *mlx);
+void		displayimage(t_mlx *mlx);
+char		reversebyte(char b);
 
 #endif

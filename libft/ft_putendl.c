@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_putendl.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 15:09:51 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/22 12:26:40 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/09 12:02:20 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-void	ft_putendl(char const *str)
+void	ft_putendl(const char *str)
 {
 	ft_putendl_fd(str, 1);
 }

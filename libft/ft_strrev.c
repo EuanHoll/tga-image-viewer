@@ -3,32 +3,32 @@
 /*                                                        ::::::::            */
 /*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 14:59:48 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/29 13:04:37 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 10:18:13 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-char	*ft_strrev(char *s)
+void	ft_strrev(char *str)
 {
-	int		i;
-	int		j;
-	char	c;
+	size_t	i;
+	size_t	len;
+	size_t	half;
+	int		temp;
 
-	if (!s)
-		return (NULL);
-	i = ft_strlen(s) - 1;
-	j = 0;
-	while (i > j)
+	i = 0;
+	if (str == NULL)
+		return ;
+	len = ft_strlen(str);
+	half = (len / 2);
+	while (i < half)
 	{
-		c = s[i];
-		s[i] = s[j];
-		s[j] = c;
-		i--;
-		j++;
+		temp = str[i];
+		str[i] = str[(len - 1) - i];
+		str[(len - 1) - i] = temp;
+		i++;
 	}
-	return (s);
 }

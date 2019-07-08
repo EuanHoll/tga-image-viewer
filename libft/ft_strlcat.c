@@ -3,31 +3,28 @@
 /*                                                        ::::::::            */
 /*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 13:37:38 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/29 18:08:09 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 10:48:45 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/30 23:58:14 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	j;
+	size_t	dstlen;
+	size_t	srclen;
 
-	j = ((size_t)(ft_strlen((char *)dst)) < size) ?
-		(size_t)ft_strlen(dst) : size;
-	i = 0;
-	while (src[i] != '\0' && (j + i + 1) < size)
-	{
-		dst[i + j] = src[i];
-		i++;
-	}
-	if (size > j)
-		dst[i + j] = '\0';
-	if (size < i + j)
-		return (size);
-	return (j + ft_strlen((char *)src));
+	srclen = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	dstlen = ft_strnlen(dst, size);
+	while (src[srclen] != '\0' && (dstlen + srclen) < (size - 1))
+		srclen++;
+	ft_memcpy(&dst[dstlen], src, srclen);
+	if ((dstlen + srclen) != size)
+		dst[(dstlen + srclen)] = '\0';
+	return (dstlen + srclen + ft_strlen(&src[srclen]));
 }

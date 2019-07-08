@@ -3,28 +3,23 @@
 /*                                                        ::::::::            */
 /*   ft_strncat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 13:28:46 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/29 18:08:22 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 10:48:45 by pholster       #+#    #+#                */
+/*   Updated: 2019/05/01 00:09:35 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strncat(char *str1, const char *str2, size_t n)
 {
-	size_t		i;
-	size_t		j;
+	size_t	str1len;
+	size_t	str2len;
 
-	j = (size_t)ft_strlen((char*)s1);
-	i = (size_t)ft_strlen((char*)s2);
-	if (i < n)
-		ft_strcpy(s1 + j, s2);
-	else
-	{
-		ft_strncpy(s1 + j, s2, n);
-		s1[j + n] = '\0';
-	}
-	return (s1);
+	str1len = ft_strlen(str1);
+	str2len = ft_strnlen(str2, n);
+	ft_memcpy(&str1[str1len], str2, str2len);
+	str1[(str1len + str2len)] = '\0';
+	return (str1);
 }

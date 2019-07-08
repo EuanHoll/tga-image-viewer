@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 19:15:12 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/21 17:34:28 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/07 16:33:10 by pholster       #+#    #+#                */
+/*   Updated: 2019/05/01 02:11:51 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int		ft_strcmp(const char *str1, const char *str2)
 {
-	return (ft_memcmp(s1, s2, ft_strlen((char*)s1) + 1));
+	return (ft_memcmp(str1, str2, ft_strlen(str1) + 1));
 }

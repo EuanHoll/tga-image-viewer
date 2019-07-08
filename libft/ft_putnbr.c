@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_putnbr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 15:06:29 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/22 12:27:06 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/08 15:28:35 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/01 12:52:07 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long long value)
 {
-	ft_putnbr_fd(n, 1);
+	ft_putnbr_cbase_fd(value, 10, TRUE, 1);
 }

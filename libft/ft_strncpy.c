@@ -3,30 +3,21 @@
 /*                                                        ::::::::            */
 /*   ft_strncpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 18:57:00 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/21 19:03:54 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/11 10:37:30 by pholster       #+#    #+#                */
+/*   Updated: 2019/05/01 00:32:49 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	size_t i;
+	size_t	dstlen;
 
-	i = (size_t)ft_strlen((char*)src) + 1;
-	if (len > i)
-	{
-		dst = ft_memcpy(dst, src, i);
-		while (i < len)
-		{
-			dst[i] = '\0';
-			i++;
-		}
-		return (dst);
-	}
-	else
-		return (ft_memcpy(dst, src, len));
+	dstlen = ft_strnlen(src, n);
+	ft_memcpy(dst, src, dstlen);
+	ft_bzero(&dst[dstlen], n - dstlen);
+	return (dst);
 }

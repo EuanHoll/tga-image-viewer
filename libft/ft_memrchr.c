@@ -3,30 +3,25 @@
 /*                                                        ::::::::            */
 /*   ft_memrchr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/21 14:28:29 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/29 13:05:23 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/15 20:17:24 by pholster       #+#    #+#                */
+/*   Updated: 2019/05/01 02:08:48 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-void	*ft_memrchr(const void *s, int c, size_t n)
+void	*ft_memrchr(const void *str, int c, size_t len)
 {
-	unsigned const char *d;
-	unsigned const char *f;
+	unsigned char	*temp_str;
 
-	if (!s || (int)n < 0)
-		return (NULL);
-	d = (unsigned char *)s;
-	f = NULL;
-	while (n > 0)
+	temp_str = (unsigned char *)str;
+	while (len > 0)
 	{
-		if (*d == (unsigned char)c)
-			f = d;
-		d++;
-		n--;
+		len--;
+		if (temp_str[len] == (unsigned char)c)
+			return (&temp_str[len]);
 	}
-	return ((void *)f);
+	return (NULL);
 }

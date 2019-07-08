@@ -3,14 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_isprint.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/20 13:45:43 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/21 17:14:20 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/09 11:43:50 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/libft.h"
+
 int		ft_isprint(int c)
 {
-	return (c >= 32 && c < 127);
+	return (c >= 32 && c <= 126);
 }

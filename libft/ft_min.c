@@ -3,14 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_min.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/29 15:32:21 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/03/29 15:34:24 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/01/19 12:40:13 by pholster       #+#    #+#                */
+/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_min(int i1, int i2)
+#include "includes/libft.h"
+
+long long	ft_min(long long num1, long long num2)
 {
-	return ((i1 < i2) ? i1 : i2);
+	if (num1 < num2)
+		return (num1);
+	return (num2);
 }
