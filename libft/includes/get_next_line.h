@@ -17,7 +17,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
-# define BUFF_SIZE	32
+# define BUFF_SIZE	4503218
 # define FD		content_size
 # define STR	content
 

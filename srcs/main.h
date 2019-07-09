@@ -51,7 +51,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 int			opentga(t_img *img, char *loc);
-void		plot(int x, int y, int colour, t_mlx *mlx);
+void		plot(int x, int y, unsigned int colour, t_mlx *mlx);
 void		displayimage(t_mlx *mlx);
 char		reversebyte(char b);
 void		strtoimg(t_img *img, t_tga *tga, char *str);

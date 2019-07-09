@@ -19,11 +19,13 @@ static int	inbounds(int x, int y, t_mlx *mlx)
 	return (0);
 }
 
-void		plot(int x, int y, int colour, t_mlx *mlx)
+void		plot(int x, int y, unsigned int colour, t_mlx *mlx)
 {
 	int *i_img;
 
 	i_img = mlx->img_add;
+	//ft_putbytes(&colour, 4);
+	//ft_putchar('\n');
 	if (inbounds(x, y, mlx))
 		ft_memcpy(&i_img[(y * mlx->image.width) + x], &colour, 4);
 }

@@ -28,6 +28,12 @@ int			setup(t_mlx *mlx, char *loc)
 	return (1);
 }
 
+static int	loop(t_mlx *mlx)
+{
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img_pt, 0, 0);
+	return (0);
+}
+
 int			main(int argc, char **argv)
 {
 	t_mlx	mlx;
@@ -39,6 +45,7 @@ int			main(int argc, char **argv)
 			ft_putendl("Please Enter a valid file");
 			return (0);
 		}
+		mlx_loop_hook(mlx.mlx, loop, &mlx);
 		mlx_loop(mlx.mlx);
 	}
 	return (0);

@@ -12,6 +12,17 @@
 
 #include "main.h"
 
+static void printheader(t_img *img, t_tga *tga)
+{
+	printf("ID Length -> %i\n", tga->idlen);
+	printf("Colour Image Map Type -> %i\n", tga->clr_map_type);
+	printf("Image Type -> %i\n", tga->img_type);
+	printf("Colour Map Length -> %i\n", tga->cmlen);
+	printf("Image Width -> %i\n", img->width);
+	printf("Image Height -> %i\n", img->height);
+	printf("Pixel Depth -> %i\n", img->pxdepth);
+}
+
 static void	settgaheader(char *str, t_tga *tga, t_img *img)
 {
 	tga->idlen = (str[0]);
@@ -25,6 +36,7 @@ static void	settgaheader(char *str, t_tga *tga, t_img *img)
 	img->width = (str[13] << 8) | str[12];
 	img->height = (str[15] << 8) | str[14];
 	img->pxdepth = str[16];
+	printheader(img, tga);
 }
 
 int			opentga(t_img *img, char *loc)

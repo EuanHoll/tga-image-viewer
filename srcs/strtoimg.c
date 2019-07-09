@@ -12,18 +12,20 @@
 
 #include "main.h"
 
-static int	pixelfrompos(char *str, size_t i, size_t size)
+static int	pixelfrompos(unsigned char *str, size_t i, size_t size)
 {
 	unsigned int	ret;
-	int				j;
-
-	j = size - 1;
-	ret = 0;
-	while (j >= 0)
-	{
-		ret = (ret << 4) | str[i + (size_t)j];
-		j--;
-	}
+	
+	ret = ~str[i + 2] << 24;
+	ret |= str[i + 1] << 16;
+	ret |= str[i + 0] << 8;
+	ret |= str[i + 3];
+	(void)size;
+	// ft_putendl("\nPair:");
+	// ft_putbytes(&str[i], 4);
+	// ft_putchar('\n');
+	// ft_putbytes(&ret, 4);
+	// ft_putchar('\n');
 	return (ret);
 }
 
@@ -37,19 +39,15 @@ void		strtoimg(t_img *img, t_tga *tga, char *str)
 	i = 19 + tga->idlen;
 	if (tga->clr_map_type != 0)
 		i += tga->cmlen * (tga->cmsize / 4);
-	size = img->pxdepth / 4;
+	size = img->pxdepth / 8;
 	img->pixels = (unsigned int*)ft_memalloc(sizeof(unsigned int) *
 				(img->height * img->width));
 	max = (img->height * img->width * size) + i;
-	ft_printf("Size %zu, Max %zu, i %i\n", size, max, tga->cmlen);
 	j = 0;
 	while (i < max)
 	{
-		img->pixels[j] = pixelfrompos(str, i, size);
+		img->pixels[j] = pixelfrompos((unsigned char *)str, i, size);
 		i += size;
-		ft_putbytes(&img->pixels[j], size);
-		ft_putchar('\n');
 		j++;
 	}
-	ft_putendl("Finished Setting");
 }
