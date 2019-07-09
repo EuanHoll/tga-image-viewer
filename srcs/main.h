@@ -21,6 +21,8 @@
 # include <fcntl.h>
 # include <stdio.h> //Remove
 
+# define CLOSE_EVENT 17
+
 typedef struct	s_tga
 {
 	unsigned char	idlen;
@@ -54,6 +56,8 @@ int			opentga(t_img *img, char *loc);
 void		plot(int x, int y, unsigned int colour, t_mlx *mlx);
 void		displayimage(t_mlx *mlx);
 char		reversebyte(char b);
-void		strtoimg(t_img *img, t_tga *tga, char *str);
+void		strtoimg(t_img *img, t_tga *tga, unsigned char *str);
+int			pixelfrompos(unsigned char *str, size_t i, t_img *img);
+void		controls(t_mlx *mlx);
 
 #endif

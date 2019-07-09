@@ -23,7 +23,7 @@ static void printheader(t_img *img, t_tga *tga)
 	printf("Pixel Depth -> %i\n", img->pxdepth);
 }
 
-static void	settgaheader(char *str, t_tga *tga, t_img *img)
+static void	settgaheader(unsigned char *str, t_tga *tga, t_img *img)
 {
 	tga->idlen = (str[0]);
 	tga->clr_map_type = (str[1]);
@@ -42,13 +42,13 @@ static void	settgaheader(char *str, t_tga *tga, t_img *img)
 int			opentga(t_img *img, char *loc)
 {
 	int		fd;
-	char	*str;
+	unsigned char	*str;
 	t_tga	tga;
 
 	fd = open(loc, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	str = ft_readfile(fd);
+	str = (unsigned char *)ft_readfile(fd);
 	close(fd);
 	if (str == NULL)
 		return (0);
