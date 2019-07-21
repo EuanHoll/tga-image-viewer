@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/09 18:55:48 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/07/09 18:55:48 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/07/21 18:32:58 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,6 @@ static int	b24(unsigned char *str, size_t i)
 	return (ret);
 }
 
-static int	b16(unsigned char *str, size_t i)
-{
-	unsigned char	g;
-	unsigned int	ret;
-	
-	//prop wrong
-	g  = (str[i] & 0xe0) >> 5;
-	g  |= (str[i + 1] & 0x7) << 3;
-	ret = g << 16;
-	ret |= (str[i] & 0x1f) << 8;
-	ret |= str[i + 1] & 0xf8;
-	ft_putstr("16 BIT!\n");
-	return (ret);
-}
-
-static int	b15(unsigned char *str, size_t i)
-{
-	unsigned int	ret;
-
-	//prop wrong
-	ret = str[i + 1] << 16;
-	ret |= str[i + 0] << 8;
-	ret |= str[i + 2];
-	ft_putstr("16 BIT!\n");
-	return (ret);
-}
-
 static int	b8(unsigned char *str, size_t i)
 {
 	unsigned int	ret;
@@ -92,10 +65,11 @@ int	pixelfrompos(unsigned char *str, size_t i, t_img *img)
 		return (b32(str, i));
 	if (img->pxdepth == 24)
 		return (b24(str, i));
-	if (img->pxdepth == 16)
-		return (b16(str, i));
-	if (img->pxdepth == 15)
-		return (b15(str, i));
+	if (img->pxdepth == 16 || img->pxdepth == 15)
+	{
+		ft_putendl("Error 16/15 bit image");
+		return (0);
+	}
 	if (img->pxdepth == 8)
 		return (b8(str, i));
 	return (0);
