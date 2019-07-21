@@ -3,25 +3,23 @@
 /*                                                        ::::::::            */
 /*   ft_striter.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 11:03:33 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/22 15:36:15 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/27 20:05:07 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
-
-void	ft_striter(const char *str, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-	size_t	i;
+	int i;
 
 	i = 0;
-	if (f == NULL || str == NULL)
+	if (!s || !f)
 		return ;
-	while (str[i] != '\0')
+	while (s[i])
 	{
-		f((char *)&str[i]);
+		f(&s[i]);
 		i++;
 	}
 }

@@ -3,19 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_strdel.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 10:56:03 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/20 17:33:19 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/21 17:05:00 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 void	ft_strdel(char **as)
 {
-	if (as == NULL || *as == NULL)
-		return ;
-	free(*as);
-	*as = NULL;
+	ft_memdel((void**)as);
 }

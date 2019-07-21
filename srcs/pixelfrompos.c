@@ -68,10 +68,14 @@ static int	b15(unsigned char *str, size_t i)
 static int	b8(unsigned char *str, size_t i)
 {
 	unsigned int	ret;
-	
-	ret = (unsigned char)(((float)((str[i] & 0x7)) / 8) * 256) << 16; //21
-	ret |= (unsigned char)(((float)((str[i] & 0x38) >> 3) / 8) * 256) << 8;  //10
-	ret |= (unsigned char)(((float)((str[i] & 0xC0) >> 6) / 4) * 256);
+	float			a;
+
+	a = (float)(str[i] & 0x7) / (float)8;
+	ret = ((unsigned char)(a * 255)) << 16; //21
+	a = (float)((str[i] & 0x38) >> 3) / (float)8;
+	ret |= (unsigned char)(a * 255) << 8;  //10
+	a = (float)((str[i] & 0xC0) >> 6) / (float)4;
+	ret |= (unsigned char)(a * 255);
 	// ft_putendl("\nPair:");
 	// ft_putbytes(&str[i], 1);
 	// ft_putchar('\n');

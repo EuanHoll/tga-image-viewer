@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/11 12:26:00 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/01 01:59:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/21 14:17:47 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/21 17:04:30 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	return (ft_memchr(str, c, ft_strlen(str) + 1));
+	return ((char*)ft_memchr(s, c, ft_strlen((char*)s) + 1));
 }

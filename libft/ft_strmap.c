@@ -3,33 +3,30 @@
 /*                                                        ::::::::            */
 /*   ft_strmap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 11:22:31 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/24 13:38:09 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/27 19:54:23 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strmap(const char *str, char (*f)(char))
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	size_t	i;
-	size_t	len;
-	char	*ret;
+	char	*str;
+	int		i;
 
-	i = 0;
-	if (f == NULL || str == NULL)
+	if (!s)
 		return (NULL);
-	len = ft_strlen(str);
-	ret = ft_strnew(len);
-	if (ret == NULL)
+	i = ft_strlen((char *)s) - 1;
+	str = ft_strnew(i + 1);
+	if (!str)
 		return (NULL);
-	while (i < len)
+	while (i >= 0)
 	{
-		ret[i] = f(str[i]);
-		i++;
+		str[i] = f(s[i]);
+		i--;
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (str);
 }

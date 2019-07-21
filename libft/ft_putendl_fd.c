@@ -3,22 +3,19 @@
 /*                                                        ::::::::            */
 /*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/09 12:10:11 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/20 15:23:08 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/29 16:51:46 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(const char *str, int fd)
+void	ft_putendl_fd(char const *str, int fd)
 {
-	if (str == NULL)
-	{
-		ft_putendl_fd("(null)", fd);
+	if (!str)
 		return ;
-	}
 	ft_putstr_fd(str, fd);
-	write(fd, "\n", 1);
+	ft_putchar_fd('\n', fd);
 }

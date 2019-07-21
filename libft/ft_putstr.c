@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_putstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/07 16:33:10 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/20 14:15:07 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/22 12:26:52 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-void	ft_putstr(const char *str)
+void	ft_putstr(char const *str)
 {
 	ft_putstr_fd(str, 1);
 }

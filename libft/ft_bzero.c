@@ -3,17 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/11 16:47:44 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/21 13:13:16 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/21 17:02:36 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-void	ft_bzero(void *str, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	if (len != 0)
-		ft_memset(str, 0, len);
+	ft_memset(s, 0, n);
 }

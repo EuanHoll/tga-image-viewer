@@ -3,14 +3,12 @@
 /*                                                        ::::::::            */
 /*   ft_isdigit.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/09 11:35:45 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/20 14:27:50 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/20 14:28:45 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "includes/libft.h"
 
 int		ft_isdigit(int c)
 {

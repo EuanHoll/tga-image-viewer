@@ -3,25 +3,23 @@
 /*                                                        ::::::::            */
 /*   ft_striteri.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 11:18:33 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/22 15:39:39 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/27 20:04:59 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
-
-void	ft_striteri(const char *str, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t	i;
+	int i;
 
 	i = 0;
-	if (f == NULL || str == NULL)
+	if (!s || !f)
 		return ;
-	while (str[i] != '\0')
+	while (s[i])
 	{
-		f((unsigned int)i, (char *)&str[i]);
+		f((unsigned int)i, &s[i]);
 		i++;
 	}
 }

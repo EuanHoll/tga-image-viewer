@@ -3,19 +3,27 @@
 /*                                                        ::::::::            */
 /*   ft_strncmp.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/07 16:33:10 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/01 02:30:30 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/20 19:28:33 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/27 14:54:31 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-int		ft_strncmp(const char *str1, const char *str2, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	len;
+	int sl1;
+	int sl2;
 
-	len = ft_strnlen(str1, n);
-	return (ft_memcmp(str1, str2, len + (len != n)));
+	if (n == 0)
+		return (0);
+	sl1 = ft_strlen((char*)s1);
+	sl2 = ft_strlen((char*)s2);
+	if (sl1 == sl2 && (int)n >= sl1 + 1)
+		return (ft_memcmp(s1, s2, sl1));
+	if ((int)n < sl1 + 1)
+		return (ft_memcmp(s1, s2, n));
+	return (ft_memcmp(s1, s2, sl1 + 1));
 }

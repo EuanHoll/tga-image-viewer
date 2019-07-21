@@ -3,16 +3,44 @@
 /*                                                        ::::::::            */
 /*   ft_strtrim.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/11 14:53:11 by pholster       #+#    #+#                */
-/*   Updated: 2019/04/11 21:41:16 by pholster      ########   odam.nl         */
+/*   Created: 2019/03/22 15:50:39 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/03/27 19:42:36 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strtrim(const char *str)
+static	int	ft_getlengthww(char *str)
 {
-	return (ft_strdtrim(str, " \n\t"));
+	int i;
+	int j;
+
+	j = ft_skipwhitespace(str, 0);
+	i = ft_strlen(str);
+	while (j < i)
+	{
+		if (ft_skipwhitespace(str, j) >= i)
+		{
+			return (j);
+		}
+		j++;
+	}
+	return (j);
+}
+
+char		*ft_strtrim(char const *s)
+{
+	char	*str;
+	int		i;
+
+	if (!s)
+		return (NULL);
+	i = ft_skipwhitespace((char*)s, 0);
+	str = ft_strnew(ft_getlengthww((char*)s) - i);
+	if (!str)
+		return (NULL);
+	ft_strncpy(str, &(s[i]), ft_getlengthww((char*)s) - i);
+	return (str);
 }
