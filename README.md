@@ -10,7 +10,7 @@ To use the program, simply download the binary file and run it with the path to 
 
 To view a TGA image, run the binary followed by the path to the image file:
 ```bash
-./tga_image_view /path/to/image.tga
+./tga-viewer /path/to/image.tga
 ```
 
 ## Credits
